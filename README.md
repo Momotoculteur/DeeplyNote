@@ -1,1 +1,1 @@
-# ElectronSimpleTextEditor
+# DeeplyNote
