@@ -2,3 +2,51 @@
     background-color: #c8c8c8;
     cursor: ew-resize;
 }
+
+.toolbarContener {
+    background-color: #252526;
+
+}
+
+.button {
+    padding: 0;
+    text-align: center;
+    line-height: 0;
+    border-radius: 0;
+    width: 30px;
+    min-width: 0;
+    color: #c8c8c8;
+
+    .material-icons {
+        font-size: 15px;
+    }
+}
+
+.button:hover {
+    color: #c8c8c8;
+}
+
+
+::ng-deep .mat-list-item-content:hover{
+    color:white;
+    background-color: #333333;
+
+}
+
+::ng-deep .mat-list-item-content{
+    color: #c8c8c8;
+}
+
+.highlight {
+    color: white !important;;
+}
+
+
+
+.mat-list-item {
+    height: 20px !important;
+}
+
+::ng-deep .mat-list-item-content {
+    padding: 0!important;
+}

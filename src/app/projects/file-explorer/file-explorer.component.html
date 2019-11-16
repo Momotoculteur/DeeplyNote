@@ -1,11 +1,19 @@
-<div fxLayout="row" fxFill [style.width.px]='divWidth'>
+<div fxLayout="row" fxFlex [style.width.px]='divWidth'>
     <div fxFlex fxLayout="column">
-        <div class="toolbarContener">
+        <div fxFlex="20px" class="toolbarContener" fxLayout="row" fxLayoutAlign="start">
 
+            <button mat-button class="button" (click)="openFolderDirectory()" >
+                <i class="material-icons">
+                    folder_open
+                </i>
+            </button>
         </div>
-        <div class="explorerContener">
+        <mat-nav-list fxLayout="column" fxFlex class="explorerContener">
+            <mat-list-item  *ngFor="let file of listTxtFiles">
+                <a (click)="test(file)" [ngClass]="{'highlight': file.highlight}">{{file.name}}</a>
 
-        </div>
+            </mat-list-item>
+        </mat-nav-list>
     </div>
     <div fxFlex="3px" class="grabber">
     </div>

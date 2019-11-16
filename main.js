@@ -1,5 +1,5 @@
-const { app, BrowserWindow } = require('electron')
-
+const { app, BrowserWindow, dialog, ipcMain } = require('electron')
+const fs = require('fs')
 
 let win;
 let isToolsDev;
@@ -8,7 +8,7 @@ isToolsDev = args.some(val => val === '--devTools');
 
 
 function createWindow () {
-    let win = new BrowserWindow({
+    win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -40,3 +40,26 @@ function createWindow () {
 }
 
 app.on('ready', createWindow)
+
+
+ipcMain.on('pingOpenFolderDirectory', (event, message) => {
+    const options = {
+        title: 'Ouvrir un dossier',
+        properties: ['openDirectory'],
+    };
+    dialog.showOpenDialog(win, options
+    ).then(result => {
+
+
+        if(!result.canceled) {
+            const listFiles = fs.readdirSync(result.filePaths[0]);
+            let files = listFiles.filter( function( elm ) {return elm.match(/.*\.(txt)/ig);});
+            event.reply('responseOpenFolderDirectory', files);
+
+        } else {
+            console.log('Annulation par l utilisateur')
+        }
+    }).catch(err => {
+        console.log(err);
+    })
+});

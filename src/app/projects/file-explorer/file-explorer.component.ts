@@ -1,4 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
+import {ElectronService} from 'ngx-electron';
+import {FileType} from '../../../shared/interface/FileType';
 
 @Component({
   selector: 'app-file-explorer',
@@ -11,10 +13,37 @@ export class FileExplorerComponent implements OnInit {
     public divWidth: number;
     public oldX: number;
 
-    constructor() {
+    public listTxtFiles: FileType[];
+
+
+    constructor(public electronService: ElectronService) {
         this.grabber = false;
         this.divWidth = 150;
         this.oldX = 0;
+
+        this.listTxtFiles = [];
+
+        this.initChannels();
+
+    }
+
+    public initChannels(): void {
+        this.electronService.ipcRenderer.on('responseOpenFolderDirectory', (event, response) => {
+            let responseArray: string[] = response;
+            this.listTxtFiles = [];
+            responseArray.forEach( (file) => {
+                this.listTxtFiles.push({name: file, highlight: false});
+            });
+        });
+    }
+
+    public openFolderDirectory(): void {
+        this.electronService.ipcRenderer.send('pingOpenFolderDirectory');
+    }
+
+    public test(file: FileType): void {
+        this.listTxtFiles.map( file => file.highlight = false);
+        file.highlight = true;
     }
 
     ngOnInit() {
