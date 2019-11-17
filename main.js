@@ -50,7 +50,6 @@ ipcMain.on('pingOpenFolderDirectory', (event, message) => {
     dialog.showOpenDialog(win, options
     ).then(result => {
 
-
         if(!result.canceled) {
             const listFiles = fs.readdirSync(result.filePaths[0]);
             let files = listFiles.filter( function( elm ) {return elm.match(/.*\.(txt)/ig);});

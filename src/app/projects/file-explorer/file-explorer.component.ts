@@ -41,7 +41,7 @@ export class FileExplorerComponent implements OnInit {
         this.electronService.ipcRenderer.send('pingOpenFolderDirectory');
     }
 
-    public test(file: FileType): void {
+    public updateHighlight(file: FileType): void {
         this.listTxtFiles.map( file => file.highlight = false);
         file.highlight = true;
     }

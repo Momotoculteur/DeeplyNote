@@ -10,7 +10,7 @@
         </div>
         <mat-nav-list fxLayout="column" fxFlex class="explorerContener">
             <mat-list-item  *ngFor="let file of listTxtFiles">
-                <a (click)="test(file)" [ngClass]="{'highlight': file.highlight}">{{file.name}}</a>
+                <a (click)="updateHighlight(file)" [ngClass]="{'highlight': file.highlight}">{{file.name}}</a>
 
             </mat-list-item>
         </mat-nav-list>
