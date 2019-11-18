@@ -1,3 +1,8 @@
-<div fxFlex>
-    salut
+<div fxLayout="row" fxFill fxLayoutAlign="start stretch">
+    <div fxFlex="30px" class="lineCounterDisplay">
+        {{lineNumber}}
+    </div>
+    <div fxFlex class="textEditorDisplay">
+        {{fileContent}}
+    </div>
 </div>

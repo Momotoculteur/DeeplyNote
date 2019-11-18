@@ -29,10 +29,15 @@ export class FileExplorerComponent implements OnInit {
 
     public initChannels(): void {
         this.electronService.ipcRenderer.on('responseOpenFolderDirectory', (event, response) => {
-            let responseArray: string[] = response;
+            let responseArray: string[] = response.files;
             this.listTxtFiles = [];
             responseArray.forEach( (file) => {
-                this.listTxtFiles.push({name: file, highlight: false});
+                this.listTxtFiles.push({
+                    name: file,
+                    highlight: false,
+                    path: response.path + '\\' + file
+                });
+                console.log(response.path + '\\' + file);
             });
         });
     }
@@ -44,6 +49,8 @@ export class FileExplorerComponent implements OnInit {
     public updateHighlight(file: FileType): void {
         this.listTxtFiles.map( file => file.highlight = false);
         file.highlight = true;
+        this.electronService.ipcRenderer.send('pingDisplayFile', file.path);
+        //console.log
     }
 
     ngOnInit() {

@@ -52,8 +52,12 @@ ipcMain.on('pingOpenFolderDirectory', (event, message) => {
 
         if(!result.canceled) {
             const listFiles = fs.readdirSync(result.filePaths[0]);
-            let files = listFiles.filter( function( elm ) {return elm.match(/.*\.(txt)/ig);});
-            event.reply('responseOpenFolderDirectory', files);
+            let filesList = listFiles.filter( function( elm ) {return elm.match(/.*\.(txt)/ig);});
+            const response = {
+                path: result.filePaths[0],
+                files: filesList
+            };
+            event.reply('responseOpenFolderDirectory', response);
 
         } else {
             console.log('Annulation par l utilisateur')
@@ -62,3 +66,13 @@ ipcMain.on('pingOpenFolderDirectory', (event, message) => {
         console.log(err);
     })
 });
+
+ipcMain.on('pingDisplayFile', (event, message) => {
+    const fileContent = fs.readFileSync(message, 'utf8');
+    const lineNumber = fileContent.split('\n').length;
+    const response = {
+        file: fileContent,
+        line: lineNumber
+    };
+    event.reply('responseFileContent', response);
+})
