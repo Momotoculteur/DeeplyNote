@@ -2,8 +2,8 @@
     -webkit-user-select: none;
     -webkit-app-region: drag;
     //height: 30px;
-    background-color: #333333;
-    color: #c8c8c8;
+    background-color: var(--backgroundColor-MainBar);
+    color: var(--textColor-MainBar);
     padding: 0;
     //height: 100%;
     //width: 100%;

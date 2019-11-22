@@ -4,7 +4,7 @@
 }
 
 .toolbarContener {
-    background-color: #252526;
+    background-color: var(--backgroundColor-ExplorerBar);
 
 }
 
@@ -15,7 +15,7 @@
     border-radius: 0;
     width: 30px;
     min-width: 0;
-    color: #c8c8c8;
+    color: var(--textColor-MainBar);
 
     .material-icons {
         font-size: 15px;
@@ -33,16 +33,16 @@
 
 ::ng-deep .mat-list-item-content:hover{
     color:white;
-    background-color: #333333;
+    background-color: var(--backgroundColor-MainBar);
 
 }
 
 ::ng-deep .mat-list-item-content{
-    color: #c8c8c8;
+    color: var(--textColor-MainBar);
 }
 
 .highlight {
-    color: white !important;;
+    color: var(--textColor-Highlight) !important;
 }
 
 

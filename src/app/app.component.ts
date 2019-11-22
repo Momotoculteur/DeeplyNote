@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ThemeManagerService} from '../shared/service/theme-manager.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DeeplyLabel';
+    constructor(public themeManager: ThemeManagerService) {
+        this.themeManager.setTheme();
+
+    }
 }

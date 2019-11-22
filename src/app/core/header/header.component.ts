@@ -20,23 +20,23 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
     }
 
-    private closeApp() {
+    public closeApp() {
         this.electronService.remote.getCurrentWindow().close();
     }
 
-    private isFullScreen(): boolean {
+    public isFullScreen(): boolean {
         return this.electronService.remote.getCurrentWindow().isMaximized();
     }
 
-    private maximizeApp() {
+    public maximizeApp() {
         this.electronService.remote.getCurrentWindow().maximize();
     }
 
-    private unMaximizeApp() {
+    public unMaximizeApp() {
         this.electronService.remote.getCurrentWindow().unmaximize();
     }
 
-    private reduceApp() {
+    public reduceApp() {
         this.electronService.remote.getCurrentWindow().minimize();
     }
 

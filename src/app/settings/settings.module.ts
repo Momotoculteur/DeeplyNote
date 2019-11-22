@@ -5,7 +5,7 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { SettingsComponent } from '../settings/settings.component';
 
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {MatToolbarModule} from '@angular/material';
+import {MatRadioModule, MatToolbarModule} from '@angular/material';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import {MatToolbarModule} from '@angular/material';
         CommonModule,
         SettingsRoutingModule,
         FlexLayoutModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatRadioModule
     ]
 })
 export class SettingsModule { }

@@ -1,13 +1,13 @@
 .lineCounterDisplay {
-    background-color: #252526;
-    color: #c8c8c8;
+    background-color: var(--backgroundColor-LineContent);
+    color: var(--textColor-MainBar);
     line-height: 18px;
 }
 
 .textEditorDisplay {
     word-break: normal;
     white-space: pre-wrap;
-    color: white;
+    color: var(--textColor-Editor);
 
 }
 
@@ -25,11 +25,11 @@
 }
 
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple  {
-    background-color: #1e1e1e;
+    background-color: var(--backgroungcolor-App);
 }
 
 ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline  {
-    background-color: #1e1e1e;
+    background-color: var(--backgroungcolor-App);
 }
 
 

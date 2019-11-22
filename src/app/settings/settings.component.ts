@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {custom, dark, light, Theme} from '../../shared/interface/Theme';
+import {ThemeManagerService} from '../../shared/service/theme-manager.service';
+import {TypeTheme} from '../../shared/enum/TypeTheme';
 
 @Component({
   selector: 'app-settings',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+    public availableTheme: TypeTheme[];
+    public curTheme: Theme = light;
 
-  ngOnInit() {
-  }
+    constructor(public themeManager: ThemeManagerService) {
+        this.availableTheme = [
+            TypeTheme.DARK,
+            TypeTheme.LIGHT,
+            TypeTheme.CUSTOM
+        ];
+    }
+
+    ngOnInit() {
+    }
 
 }
