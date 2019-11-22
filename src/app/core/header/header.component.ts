@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
+import {FooterUpdateService} from '../../../shared/service/footer-update.service';
+import {MenuState} from '../../../shared/enum/MenuState';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +10,10 @@ import { ElectronService } from 'ngx-electron';
 })
 export class HeaderComponent implements OnInit {
 
+    public aliasMenuState = MenuState;
 
-    private electronService: ElectronService;
-
-
-    constructor() {
+    constructor(public electronService: ElectronService,
+                public footerService: FooterUpdateService) {
         this.electronService = new ElectronService();
     }
 
@@ -37,6 +38,10 @@ export class HeaderComponent implements OnInit {
 
     private reduceApp() {
         this.electronService.remote.getCurrentWindow().minimize();
+    }
+
+    public updateHeader(newState: MenuState): void {
+        this.footerService.updateMenuStateSubject(newState);
     }
 
 

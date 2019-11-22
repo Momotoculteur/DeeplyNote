@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MenuState} from '../../../shared/enum/MenuState';
+import {FooterUpdateService} from '../../../shared/service/footer-update.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+    public menuState: MenuState;
+    public fileOpen: string;
 
-  ngOnInit() {
-  }
+    constructor(public footerService: FooterUpdateService) {
+        this.initObserver();
+    }
+
+    ngOnInit() {
+    }
+
+    public initObserver(): void {
+        this.footerService.getMenuStateObservable().subscribe( (newState: MenuState) => {
+            this.menuState = newState;
+        });
+
+        this.footerService.getFileOpenObservable().subscribe( (newFile: string) => {
+            this.fileOpen = newFile;
+        });
+    }
 
 }

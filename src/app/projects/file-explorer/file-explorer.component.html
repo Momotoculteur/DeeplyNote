@@ -1,10 +1,15 @@
 <div fxLayout="row" fxFill [style.width.px]='divWidth'>
     <div fxFlex fxLayout="column">
-        <div fxFlex="20px" class="toolbarContener" fxLayout="row" fxLayoutAlign="start">
+        <div fxFlex="20px" class="toolbarContener" fxLayout="row" fxLayoutAlign="space-between">
 
             <button mat-button class="button" (click)="openFolderDirectory()" >
                 <i class="material-icons">
                     folder_open
+                </i>
+            </button>
+            <button mat-button class="button" (click)="saveFile()" >
+                <i class="material-icons">
+                    save
                 </i>
             </button>
         </div>
@@ -15,6 +20,6 @@
             </mat-list-item>
         </mat-nav-list>
     </div>
-    <div fxFlex="3px" class="grabber">
+    <div fxFlex="3px"  (mousedown)="onMouseDown($event)" class="grabber">
     </div>
 </div>

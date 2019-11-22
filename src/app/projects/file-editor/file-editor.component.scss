@@ -1,11 +1,37 @@
 .lineCounterDisplay {
-    white-space: pre;
-    background-color: white;
-    color: black;
+    background-color: #252526;
+    color: #c8c8c8;
+    line-height: 18px;
 }
 
 .textEditorDisplay {
     word-break: normal;
-    white-space: pre;
+    white-space: pre-wrap;
+    color: white;
+
 }
+
+.contener {
+    overflow: auto;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix{
+    padding: 0 ;
+    border: 0;
+}
+
+.numberLine {
+    padding-right: 5px;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple  {
+    background-color: #1e1e1e;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline  {
+    background-color: #1e1e1e;
+}
+
+
+
 

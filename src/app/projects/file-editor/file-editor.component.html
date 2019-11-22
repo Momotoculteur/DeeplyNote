@@ -1,8 +1,14 @@
-<div fxLayout="row" fxFill fxLayoutAlign="start stretch">
-    <div fxFlex="30px" class="lineCounterDisplay">
-        {{lineNumber}}
+<div fxLayout="row" fxFill fxLayoutAlign="start" class="contener">
+    <div fxFlex="30px" class="lineCounterDisplay" fxLayout="column" fxLayoutAlign="start">
+        <div *ngFor="let number of lineNumber" fxLayout="row" fxLayoutAlign="end" class="numberLine">
+            {{number}}
+        </div>
+
     </div>
     <div fxFlex class="textEditorDisplay">
-        {{fileContent}}
+        <mat-form-field fxFlex >
+            <textarea (input)="updateTextArea()" matInput cdkTextareaAutosize [(ngModel)]="fileContent" >
+            </textarea>
+        </mat-form-field>
     </div>
 </div>

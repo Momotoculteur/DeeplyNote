@@ -9,17 +9,17 @@
         <div fxLayout="column" fxLayoutAlign="center stretch" >
             <div fxLayout="row" fxFill class="contenerBtn" fxFill class="contenerLeftSide">
                 <img class="appLogo"  src="../../../assets/icon/icon_transparent.png"/>
-                <button fxFlex [routerLink]="['home']" class="button" mat-button >
+                <button fxFlex (click)="updateHeader(aliasMenuState.HOME)" [routerLink]="['home']" class="button" mat-button >
                     <i class="material-icons">
                         home
                     </i>
                 </button>
-                <button fxFlex [routerLink]="['projects']" class="button" mat-button >
+                <button fxFlex (click)="updateHeader(aliasMenuState.EDITOR)" [routerLink]="['projects']" class="button" mat-button >
                     <i class="material-icons">
                         view_carousel
                     </i>
                 </button>
-                <button fxFlex [routerLink]="['settings']" class="button" mat-button >
+                <button fxFlex (click)="updateHeader(aliasMenuState.SETTINGS)" [routerLink]="['settings']" class="button" mat-button >
                     <i class="material-icons">
                         settings
                     </i>

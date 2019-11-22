@@ -1,6 +1,8 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {ElectronService} from 'ngx-electron';
 import {FileType} from '../../../shared/interface/FileType';
+import {FooterUpdateService} from '../../../shared/service/footer-update.service';
+import {ProjectsManagerService} from '../../../shared/service/projects-manager.service';
 
 @Component({
   selector: 'app-file-explorer',
@@ -14,9 +16,12 @@ export class FileExplorerComponent implements OnInit {
     public oldX: number;
 
     public listTxtFiles: FileType[];
+    public currentFile: FileType;
 
 
-    constructor(public electronService: ElectronService) {
+    constructor(public electronService: ElectronService,
+                public footerService: FooterUpdateService,
+                public projectsService: ProjectsManagerService) {
         this.grabber = false;
         this.divWidth = 150;
         this.oldX = 0;
@@ -50,14 +55,15 @@ export class FileExplorerComponent implements OnInit {
         this.listTxtFiles.map( file => file.highlight = false);
         file.highlight = true;
         this.electronService.ipcRenderer.send('pingDisplayFile', file.path);
-        //console.log
+        this.footerService.updateFileOpenSubject(file.path);
+        this.currentFile = file;
     }
 
     ngOnInit() {
     }
 
     @HostListener('document:mousemove', ['$event'])
-    onMouseMove(event: MouseEvent) {
+    public onMouseMove(event: MouseEvent) {
         if (!this.grabber) {
             return;
         }
@@ -66,16 +72,21 @@ export class FileExplorerComponent implements OnInit {
     }
 
     @HostListener('document:mouseup', ['$event'])
-    onMouseUp(event: MouseEvent) {
+    public onMouseUp(event: MouseEvent) {
         this.grabber = false;
     }
-    resizer(offsetX: number) {
+    public resizer(offsetX: number) {
         this.divWidth += offsetX;
     }
-    @HostListener('document:mousedown', ['$event'])
-    onMouseDown(event: MouseEvent) {
+
+    //@HostListener('document:mousedown', ['$event'])
+    public onMouseDown(event: MouseEvent) {
         this.grabber = true;
         this.oldX = event.clientX;
+    }
+
+    public saveFile(): void {
+        this.projectsService.updateSaveFileSubject(this.currentFile);
     }
 
 }

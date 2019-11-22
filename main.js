@@ -75,4 +75,8 @@ ipcMain.on('pingDisplayFile', (event, message) => {
         line: lineNumber
     };
     event.reply('responseFileContent', response);
-})
+});
+
+ipcMain.on( 'saveFile', (event, data) => {
+    fs.writeFileSync(data.file.path, data.content);
+});

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ElectronService} from 'ngx-electron';
+import {FooterUpdateService} from '../../../shared/service/footer-update.service';
+import {MenuState} from '../../../shared/enum/MenuState';
+import {ProjectsManagerService} from '../../../shared/service/projects-manager.service';
+import {FileType} from '../../../shared/interface/FileType';
 
 @Component({
   selector: 'app-file-editor',
@@ -9,13 +13,14 @@ import {ElectronService} from 'ngx-electron';
 export class FileEditorComponent implements OnInit {
 
 
-    public lineNumber: string;
+    public lineNumber: number[];
     public fileContent: string;
 
 
-    constructor(public electronService: ElectronService) {
-        //this.lineNumber = '';
+    constructor(public electronService: ElectronService,
+                public projectsService: ProjectsManagerService) {
         this.fileContent = '';
+        this.lineNumber = [];
 
         this.initChannels();
     }
@@ -25,13 +30,23 @@ export class FileEditorComponent implements OnInit {
 
     public initChannels(): void {
         this.electronService.ipcRenderer.on('responseFileContent', (event, message) => {
-            this.lineNumber = '';
             this.fileContent = message.file;
 
-            for (let line = 0; line < message.line ; line++) {
-                this.lineNumber += line + '\n';
-            }
+            this.lineNumber = Array(message.line).fill(0).map((v,i)=>i);
         });
+
+        this.projectsService.getSaveFileSubjectObservable().subscribe( (newSaveFile: FileType) => {
+            this.electronService.ipcRenderer.send('saveFile', {
+                file: newSaveFile,
+                content: this.fileContent
+            });
+        });
+
+
+    }
+
+    public updateTextArea(): void {
+        this.lineNumber = Array(this.fileContent.split('\n').length).fill(0).map((v,i)=>i);
     }
 
 }

@@ -25,7 +25,8 @@ import {NgxElectronModule} from 'ngx-electron';
         FlexLayoutModule,
         MatIconModule,
         MatButtonModule,
-        NgxElectronModule
+        NgxElectronModule,
+
 
 
   ],
