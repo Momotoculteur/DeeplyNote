@@ -1,5 +1,8 @@
 const { app, BrowserWindow, dialog, ipcMain } = require('electron')
 const fs = require('fs')
+const Store = require('electron-store');
+
+const storage = new Store({name:'settings'});
 
 let win;
 let isToolsDev;
@@ -18,7 +21,9 @@ function createWindow () {
     titleBarStyle: 'hidden',
     icon: './src/assets/icon/icon_transparent.png',
     show: false
-    })
+    });
+
+    initSettingsPreferences();
 
     require('electron-reload')(__dirname, {
         electron: require(`${__dirname}/node_modules/electron`),
@@ -80,3 +85,31 @@ ipcMain.on('pingDisplayFile', (event, message) => {
 ipcMain.on( 'saveFile', (event, data) => {
     fs.writeFileSync(data.file.path, data.content);
 });
+
+ipcMain.on('loadUserSettings', (event, data) => {
+    event.reply('responseLoadUserSettings', storage.get('SETTINGS'));
+});
+
+function initSettingsPreferences()
+{
+    if(storage.get('SETTINGS')) {
+    } else {
+        storage.set({
+            'SETTINGS': {
+                'THEME_TYPE': 'DARK',
+                'CUSTO_PALETTE': {
+                    '--backgroungcolor-App': '#1e1e1e',
+                    '--backgroundColor-MainBar': '#333333',
+                    '--backgroundColor-ExplorerBar': '#333333',
+                    '--textColor-Highlight': '#333333',
+                    '--backgroundColor-LineContent': '#333333',
+
+                    '--textColor-MainBar': '#c8c8c8',
+                    '--textColor-Editor': '#333333'
+                }
+            }
+
+        });
+
+    }
+}

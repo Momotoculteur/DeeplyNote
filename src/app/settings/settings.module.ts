@@ -5,7 +5,9 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { SettingsComponent } from '../settings/settings.component';
 
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {MatRadioModule, MatToolbarModule} from '@angular/material';
+import {MatRadioModule, MatToolbarModule, MatFormFieldModule} from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { MccColorPickerModule } from 'material-community-components';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import {MatRadioModule, MatToolbarModule} from '@angular/material';
         SettingsRoutingModule,
         FlexLayoutModule,
         MatToolbarModule,
-        MatRadioModule
+        MatRadioModule,
+        FormsModule,
+        MccColorPickerModule
     ]
 })
 export class SettingsModule { }

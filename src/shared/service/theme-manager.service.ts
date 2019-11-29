@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import {dark, light, Theme} from '../interface/Theme';
+import {custom, dark, light, Theme} from '../interface/Theme';
+import {ElectronService} from 'ngx-electron';
+import {BehaviorSubject, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +9,35 @@ import {dark, light, Theme} from '../interface/Theme';
 export class ThemeManagerService {
 
     public activeTheme: Theme;
+    public activeThemeSubject: BehaviorSubject<Theme>;
 
-    constructor() {
-        this.activeTheme = light;
+    constructor(public electronService: ElectronService) {
+        this.activeTheme = dark;
+        this.activeThemeSubject = new BehaviorSubject(light);
+        this.initChannels();
+        this.electronService.ipcRenderer.send('loadUserSettings');
+    }
+
+    public initChannels(): void {
+        this.electronService.ipcRenderer.on('responseLoadUserSettings', (event, data) => {
+            switch (data['THEME_TYPE']) {
+                case 'DARK': {
+                    this.activeTheme = dark;
+                    break;
+                }
+                case 'LIGHT': {
+                    this.activeTheme =  light;
+                    break;
+                }
+                case 'CUSTOM': {
+                    this.activeTheme = custom;
+                    break;
+                }
+            }
+            console.log(this.activeTheme)
+            this.activeThemeSubject.next(this.activeTheme);
+            this.setTheme();
+        });
     }
 
     public setTheme(): void {

@@ -1,5 +1,11 @@
-<div>
-    <mat-radio-button class="example-radio-button" *ngFor="let theme of availableTheme" [value]="theme">
-        {{theme}}
-    </mat-radio-button>
+<div fxFill fxLayout="row" fxLayoutAlign="center">
+    <div>
+        <mat-radio-group fxFlex [(ngModel)]="activeTheme" (change)="changeTheme()" fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px">
+            <mat-radio-button *ngFor="let theme of availableTheme" [value]="theme" >
+                {{theme.type}}
+            </mat-radio-button>
+        </mat-radio-group>
+
+    </div>
+
 </div>

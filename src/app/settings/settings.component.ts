@@ -10,18 +10,32 @@ import {TypeTheme} from '../../shared/enum/TypeTheme';
 })
 export class SettingsComponent implements OnInit {
 
-    public availableTheme: TypeTheme[];
-    public curTheme: Theme = light;
+    public availableTheme: Theme[];
+    public aliasTypTheme = TypeTheme;
+    public activeTheme: Theme;
+
 
     constructor(public themeManager: ThemeManagerService) {
         this.availableTheme = [
-            TypeTheme.DARK,
-            TypeTheme.LIGHT,
-            TypeTheme.CUSTOM
+            light,
+            dark,
+            custom
         ];
+        this.themeManager.activeThemeSubject.asObservable().subscribe( (newTheme: Theme) => {
+            this.activeTheme = newTheme;
+            console.log(newTheme)
+        });
     }
 
+
+
     ngOnInit() {
+    }
+
+    public changeTheme(): void {
+        this.themeManager.activeTheme = this.activeTheme;
+        this.themeManager.setTheme();
+
     }
 
 }

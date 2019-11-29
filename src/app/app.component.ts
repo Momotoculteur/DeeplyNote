@@ -7,9 +7,7 @@ import {ThemeManagerService} from '../shared/service/theme-manager.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'DeeplyLabel';
     constructor(public themeManager: ThemeManagerService) {
-        this.themeManager.setTheme();
 
     }
 }

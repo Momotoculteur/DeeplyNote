@@ -1,5 +1,5 @@
 {
-  "name": "deeply-label",
+  "name": "DeeplyNote",
   "version": "0.0.0",
   "main": "main.js",
   "scripts": {
@@ -26,6 +26,8 @@
     "@angular/platform-browser-dynamic": "~8.2.11",
     "@angular/router": "~8.2.11",
     "electron-reload": "^1.5.0",
+    "electron-store": "^5.1.0",
+    "material-community-components": "^5.0.1",
     "material-design-icons-iconfont": "^5.0.1",
     "ngx-electron": "^2.2.0",
     "rxjs": "~6.4.0",

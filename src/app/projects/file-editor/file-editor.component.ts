@@ -31,7 +31,6 @@ export class FileEditorComponent implements OnInit {
     public initChannels(): void {
         this.electronService.ipcRenderer.on('responseFileContent', (event, message) => {
             this.fileContent = message.file;
-
             this.lineNumber = Array(message.line).fill(0).map((v,i)=>i);
         });
 
