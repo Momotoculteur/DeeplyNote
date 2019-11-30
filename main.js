@@ -90,6 +90,11 @@ ipcMain.on('loadUserSettings', (event, data) => {
     event.reply('responseLoadUserSettings', storage.get('SETTINGS'));
 });
 
+ipcMain.on('saveSettings' , (event, data) => {
+    storage.set('SETTINGS.THEME_TYPE', data.type);
+    storage.set('SETTINGS.CUSTO_PALETTE', data.props);
+});
+
 function initSettingsPreferences()
 {
     if(storage.get('SETTINGS')) {

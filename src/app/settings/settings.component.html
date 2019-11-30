@@ -4,6 +4,18 @@
             <mat-radio-button *ngFor="let theme of availableTheme" [value]="theme" >
                 {{theme.type}}
             </mat-radio-button>
+            <div *ngIf="activeTheme.type == aliasTypTheme.CUSTOM">
+                <div *ngFor="let color of activeTheme.props | keyvalue">
+                    <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="30px">
+                        {{color.key}}
+                        <input matInput type="hidden"[(ngModel)]="color.value" mccColorPickerOrigin #trigger="mccColorPickerOrigin" />
+                        <mcc-color-picker (selected)="updateCustomProperty(color)" hideEmptyUsedColors mccConnectedColorPicker [mccConnectedColorPickerOrigin]="trigger"></mcc-color-picker>
+                    </div>
+
+                </div>
+
+
+            </div>
         </mat-radio-group>
 
     </div>

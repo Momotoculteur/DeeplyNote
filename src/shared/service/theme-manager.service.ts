@@ -34,7 +34,7 @@ export class ThemeManagerService {
                     break;
                 }
             }
-            console.log(this.activeTheme)
+            custom.props = data['CUSTO_PALETTE'];
             this.activeThemeSubject.next(this.activeTheme);
             this.setTheme();
         });
