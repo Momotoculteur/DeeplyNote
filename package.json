@@ -12,6 +12,32 @@
     "electron": "electron .",
     "electron-serve": "npm run start | npm run electron"
   },
+    "build": {
+        "appId": "DeeplyNote",
+        "compression": "maximum",
+        "asar": true,
+        "win": {
+            "target": "nsis",
+            "icon": "./src/assets/icon/icon_transparent.png"
+        },
+        "electronDownload": {
+            "cache": "./cache"
+        },
+        "directories": {
+            "output": "./distElectron"
+        },
+        "nsis": {
+            "oneClick": false,
+            "perMachine": false,
+            "allowToChangeInstallationDirectory": true,
+            "deleteAppDataOnUninstall": true
+        },
+        "files": [
+            "main.js",
+            "package.json",
+            "./dist/**/*"
+        ]
+    },
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.11",
@@ -44,6 +70,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
     "electron": "^7.1.0",
+    "electron-builder": "^21.2.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",

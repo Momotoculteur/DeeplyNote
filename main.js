@@ -1,7 +1,8 @@
 const { app, BrowserWindow, dialog, ipcMain } = require('electron')
 const fs = require('fs')
 const Store = require('electron-store');
-
+const path =  require('path');
+const url = require('url');
 const storage = new Store({name:'settings'});
 
 let win;
@@ -25,23 +26,31 @@ function createWindow () {
 
     initSettingsPreferences();
 
-    require('electron-reload')(__dirname, {
-        electron: require(`${__dirname}/node_modules/electron`),
-        hardResetMethod: 'exit',
-        argv: ['--devTools']
-    });
+
+    if (isToolsDev) {
+        require('electron-reload')(__dirname, {
+            electron: require(`${__dirname}/node_modules/electron`),
+            hardResetMethod: 'exit',
+            argv: ['--devTools']
+        });
+        win.webContents.openDevTools();
+        win.loadURL('http://localhost:4200/');
+    } else {
+        //win.webContents.openDevTools();
+
+        win.loadURL(url.format({
+            pathname: path.join(__dirname, 'dist/DeeplyNote/index.html'),
+            protocol: 'file:',
+            slashes: true
+        }));
+        //console.log(path.join(__dirname, 'dist/DeeplyNote/index.html'))
+
+    }
 
 
     win.once('ready-to-show', () => {
         win.show();
     });
-
-
-    win.loadURL('http://localhost:4200/');
-
-    if (isToolsDev) {
-        win.webContents.openDevTools();
-    }
 }
 
 app.on('ready', createWindow)
