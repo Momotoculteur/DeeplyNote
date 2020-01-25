@@ -1,5 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# fichier js généré via tsc
+backend/**/*.js
+main.js
+
 # compiled output
 /dist
 /tmp
