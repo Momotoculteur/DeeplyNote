@@ -1,0 +1,18 @@
+{
+    "compileOnSave": true,
+    "include": [
+        "main.ts",
+        "backend/**/*.ts"
+    ],
+    "exclude": [
+
+    ],
+    "compilerOptions": {
+      "baseUrl": "./",
+      "sourceMap": false,
+      "declaration": false,
+      "downlevelIteration": true,
+      "experimentalDecorators": true,
+    },
+}
+  
