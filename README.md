@@ -17,6 +17,6 @@ L'ensemble des explications sont disponible ici :
 
 - Branch **Chap6** : [Build, package et distribution (installateur) de l’application](https://deeplylearning.fr/cours-logiciel-electron/chap-6-build-package-et-distribution-installateur-de-lapplication/ "Build, package et distribution (installateur) de l’application") 
 
-- Branch **Chap7** : [Migrer le backend du javascript au typescript (tsc, hot reload...)](https://deeplylearning.fr/cours-logiciel-electron/chap-7-migrer-le-backend-du-javascript-au-typescript-tsc-hot-reload/ "Migrer le backend du javascript au typescript (tsc, hot reload...)") 
+- Branch **Chap7** : [Coder le backend en Typescript ( transpilation via TSC )](https://deeplylearning.fr/cours-logiciel-electron/chap-7-migrer-le-backend-du-javascript-au-typescript-tsc-hot-reload/ "Coder le backend en Typescript ( transpilation via TSC )") 
 
 - Branch **Chap8** : [Tests unitaires & end-2-end ( Spectron & Jest )](https://deeplylearning.fr/cours-logiciel-electron/chap-8-tests-unitaires-end-2-end-spectron-jest/ "Tests unitaires & end-2-end ( Spectron & Jest )") 
