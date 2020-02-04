@@ -7,36 +7,9 @@
         "backend-build": "ttsc --project tsconfig.backend.json",
         "angular-build": "ng build --prod",
         "angular-serve": "ng serve",
-        "electron-build": "electron-builder",
+        "electron-build": "electron-builder --config electron-builder.json",
         "electron-serve": "electron . --devTools",
-        "all-build": "npm run angular-build && npm run backend-build && npm run electron-build",
-    },
-    "build": {
-        "appId": "DeeplyNote",
-        "compression": "maximum",
-        "asar": true,
-        "win": {
-            "target": "nsis",
-            "icon": "./src/assets/icon/icon_transparent.png"
-        },
-        "electronDownload": {
-            "cache": "./cache"
-        },
-        "directories": {
-            "output": "./distElectron"
-        },
-        "nsis": {
-            "oneClick": false,
-            "perMachine": false,
-            "allowToChangeInstallationDirectory": true,
-            "deleteAppDataOnUninstall": true
-        },
-        "files": [
-            "main.js",
-            "package.json",
-            "./dist/**/*",
-            "backend/**/*.js"
-        ]
+        "all-build": "npm run angular-build && npm run backend-build && npm run electron-build --config electron-builder.json"
     },
     "private": true,
     "dependencies": {
