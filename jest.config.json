@@ -1,0 +1,7 @@
+{
+    "verbose": true,
+    "testMatch": [
+    "**/e2e/?(*.)+(e2e|unit).[jt]s?(x)"
+    ],
+    "testEnvironment": "node"
+}

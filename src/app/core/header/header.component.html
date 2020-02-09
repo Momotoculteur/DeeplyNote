@@ -41,15 +41,15 @@
             <div fxLayout="row" fxFill class="contenerBtn">
 
                 <!--------------------   FLEX REGION | BUTTON REDUCE   ------------------------>
-                <button fxFlex mat-button class="button hoverBtnWhite" (click)="reduceApp()">
+                <button fxFlex mat-button class="button hoverBtnWhite" (click)="reduceApp()" id="reduceApp">
                     <i fxFlex class="material-icons">minimize</i>
                 </button>
                 <!--------------------   FLEX REGION | BUTTON MAXI   ------------------------>
-                <button fxFlex mat-button class="button hoverBtnWhite" *ngIf="!isFullScreen()" (click)="maximizeApp()">
+                <button fxFlex mat-button class="button hoverBtnWhite" *ngIf="!isFullScreen()" (click)="maximizeApp()" id="maximizeApp">
                     <i class="material-icons">fullscreen</i>
                </button>
                 <!--------------------   FLEX REGION | BUTTON UNMAXI   ------------------------>
-                <button fxFlex mat-button class="button hoverBtnWhite" *ngIf="isFullScreen()" (click)="unMaximizeApp()">
+                <button fxFlex mat-button class="button hoverBtnWhite" *ngIf="isFullScreen()" (click)="unMaximizeApp()" id="unMaximizeApp">
                     <i class="material-icons">fullscreen_exit</i>
                </button>
                 <!--------------------   FLEX REGION | BUTTON CLOSE   ------------------------>
