@@ -2,7 +2,7 @@
 Formation permettant de créer un éditeur de texte sous Electron via les frameworks Angular et NodeJS
 
 L'ensemble des explications sont disponible ici :
-[DeeplyLearning/Cours_logiciel](https://deeplylearning.fr/electron/)
+[DeeplyLearning/Cours_electron](https://deeplylearning.fr/electron/)
 
 ## Leçons
 - Branch **Chap1** : [Fenêtre principale, frameless bar, icon, lancement instantané & hot reload du front](https://deeplylearning.fr/cours-logiciel-electron/chap-1-fenetre-principale-frameless-bar-icon-lancement-instantane-hot-reload-du-front/ "Fenêtre principale, frameless bar, icon, lancement instantané & hot reload du front")  
