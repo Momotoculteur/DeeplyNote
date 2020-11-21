@@ -1,4 +1,4 @@
-# DeeplyNote
+# Formation Angular / Electron
 Formation permettant de créer un éditeur de texte sous Electron via les frameworks Angular et NodeJS
 
 L'ensemble des explications sont disponible ici :
